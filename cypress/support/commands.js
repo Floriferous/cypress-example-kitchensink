@@ -23,3 +23,23 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('getUndefined', () => {
+  return cy.window().then((window) => {
+    if (!window.unknown) {
+      return undefined
+    }
+
+    return 'working'
+  })
+})
+
+Cypress.Commands.add('getNull', () => {
+  return cy.window().then((window) => {
+    if (!window.unknown) {
+      return null
+    }
+
+    return 'working'
+  })
+})
